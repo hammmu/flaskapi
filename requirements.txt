@@ -1,0 +1,6 @@
+flask
+Werkzeug
+json
+pandas
+XlsxWriter
+isbntools
