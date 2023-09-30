@@ -3,3 +3,4 @@ Werkzeug
 pandas
 XlsxWriter
 isbntools
+flask_cors
