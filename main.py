@@ -1,31 +1,27 @@
-from flask import Flask, jsonify,request
+from flask import Flask,request
+from isbntools.app import *
 import json
-import werkzeug
-from isbntools.app import*
-import pandas as pd
-import xlsxwriter
+from flask_cors import CORS
+app = Flask(__name__)
 
-
-
-
-app= Flask(__name__)
+CORS(app,origins='*') 
 
 
 def get_book_metadata(isbn):
     metadata = meta(isbn)
     print(metadata)
-    return metadata
-    
+    return metadata['Title']
 
 
-@app.route('/upload', methods=['POST'])
-def getBookDetails():
-    json=request.get_json()
-    barcodes = json['barcode']
+@app.route('/getBookData',methods=['POST'])
+def hello():
+    print('i am called')
+    barcodes=request.get_json()
+    print(barcodes)
     temp=[]
-    for barcode in barcodes:
-        temp.append(get_book_metadata(barcode))
-    return json.dumps(temp)
+    for value in barcodes['barcodes']:
+        temp.append(get_book_metadata(str(value)))
+    return temp
 
 @app.route('/')
 def home():
@@ -46,64 +42,6 @@ def home():
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-
-# def receive_data():
-#     barcode = request.form['data']
-#     print('Received data from Flutter:', barcode)
-#     # Process the data as needed
-
-#     return jsonify({'message': 'Data received successfully'})
-
-
-
-#     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-#     print(barcode)
-#     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-
-# def get_book_metadata(isbn):
-#     metadata = meta(isbn)
-#     return metadata
-
-# isbn = "9781612680019"
-# book_data = get_book_metadata(isbn)
-# print("aaaaaaaaaaaaaaaa")
-
-
-
-# print(registry.bibformatters['labels'](book_data))
-
-# print("ffffffffffffffffffffffffffffffffffffffff")
-# # convert the data to a pandas 
-# book_df = pd.DataFrame(book_data, index=[0])
-
-
-# df = pd.DataFrame(book_data)
-# print(df.at[1, "ISBN"])
-
-# print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-
-# # save  to an Excel spreadsheet
-# print(book_df)
-# # book_df.to_excel("book_metadata.xlsx")
-
-# # Load credentials from JSON key file
-# scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-# credentials = ServiceAccountCredentials.from_json_keyfile_name('assets\credentials.json', scope)
-# client = gspread.authorize(credentials)
-
-# # Open the Google Sheets document
-# sheet = client.open_by_key('18R1iIEU8BoeWYREOvl879jcQriH8zHFLt9P6FbJ4Sks').sheet1
-
-# row_to_append = [barcode,book_name, author_name]
-
-# # function
-
-# async def append(sheet, row_to_append):
-#     await sheet.append_row(row_to_append)
-
-
-# append(row_to_append)
 
 
 # # Access data
