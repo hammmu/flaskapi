@@ -26,9 +26,26 @@ def getBookDetails():
     for barcode in barcodes:
         temp.append(get_book_metadata(barcode))
     return json.dumps(temp)
+
+@app.route('/')
+def home():
+	html = """
+<html>
+ <head>
+  <title>
+   Google Cloud Run - Sample Python Flask Example
+  </title>
+ </head>
+ <body>
+  <p>Hello Google Cloud Run World!</p>
+  <a href="https://cloud.google.com/run/" target="_blank">Google Cloud Run Website</a>
+ </body>
+</html>
+"""
+	return html
     
 if _name_ == '_main_':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
 
 
 
