@@ -8,7 +8,7 @@ import xlsxwriter
 
 
 
-app= Flask(_name_)
+app= Flask(__name__)
 
 
 def get_book_metadata(isbn):
@@ -37,14 +37,13 @@ def home():
   </title>
  </head>
  <body>
-  <p>Hello Google Cloud Run World!</p>
-  <a href="https://cloud.google.com/run/" target="_blank">Google Cloud Run Website</a>
+  <p>Hello Hyder</p>
  </body>
 </html>
 """
 	return html
     
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
 
 
