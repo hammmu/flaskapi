@@ -5,4 +5,4 @@ XlsxWriter
 isbntools
 flask_cors
 gspread
-oauth2client.service_account
+oauth2client
