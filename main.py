@@ -29,7 +29,6 @@ def getBookDetails():
                     string += author
                 else:
                     string += author + ','
-
             author_name=string
             print('author',author_name)
             book_name = metadata['Title']
@@ -39,18 +38,8 @@ def getBookDetails():
                     "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
             credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
             client = gspread.authorize(credentials)
-
-#             spreadsheet = client.open('libdata')
-
-# # Access a specific worksheet (by index or title)
-#             worksheet = spreadsheet.get_worksheet(0)  # Change index to access a different worksheet
-
-#             # Get all the data from the worksheet
-#             data = worksheet.get_all_records()
-#             print('data hoon; ',data)
-            # Open the Google Sheets document
             sheet = client.open_by_key('18R1iIEU8BoeWYREOvl879jcQriH8zHFLt9P6FbJ4Sks').sheet1
-            # Convert the values to strings explicitly
+        
             barcode_str = str(barcode)
             book_name_str = str(book_name)
             author_name_str = str(author_name)
@@ -59,6 +48,7 @@ def getBookDetails():
 
             # Append the row to the sheet
             sheet.append_row([barcode_str, book_name_str, author_name_str, publisher_str,year_str])
+    return [author_name,book_name]
 
         
       
