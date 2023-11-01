@@ -4,7 +4,9 @@ from flask_cors import CORS
 from oauth2client.service_account import ServiceAccountCredentials
 
 
+app= Flask(__name__)
 
+CORS(app,origins='*') 
 
 
 author_name=''
@@ -12,9 +14,7 @@ book_name=''
 publisher=''
 year=''
 
-app= Flask(__name__)
 
-CORS(app,origins='*') 
 
 @app.route('/upload', methods=['POST'])
 def getBookDetails():
