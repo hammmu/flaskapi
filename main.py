@@ -1,6 +1,6 @@
 from flask import Flask,request
-from isbntools.app import *
 import gspread
+from flask_cors import CORS
 from oauth2client.service_account import ServiceAccountCredentials
 
 
