@@ -4,7 +4,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-CORS(app,origins='*') 
+
 
 
 author_name=''
@@ -14,7 +14,7 @@ year=''
 
 app= Flask(__name__)
 
-
+CORS(app,origins='*') 
 
 @app.route('/upload', methods=['POST'])
 def getBookDetails():
