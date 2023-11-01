@@ -4,7 +4,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-
+CORS(app,origins='*') 
 
 
 author_name=''
@@ -37,7 +37,7 @@ def getBookDetails():
             year = metadata['Year']
             scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
                     "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-            credentials = ServiceAccountCredentials.from_json_keyfile_name('assets\credentials.json', scope)
+            credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
             client = gspread.authorize(credentials)
 
 #             spreadsheet = client.open('libdata')
