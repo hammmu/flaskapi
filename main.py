@@ -1,23 +1,25 @@
 from flask import Flask,request
-import gspread
 from flask_cors import CORS
-from oauth2client.service_account import ServiceAccountCredentials
 
 
 app= Flask(__name__)
 
 CORS(app,origins='*') 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
-author_name=''
-book_name=''
-publisher=''
-year=''
+
+
 
 
 
 @app.route('/upload', methods=['POST'])
 def getBookDetails():
+    author_name=''
+    book_name=''
+    publisher=''
+    year=''    
     json=request.get_json()
     barcodes = json['barcode']
     for barcode in barcodes:
