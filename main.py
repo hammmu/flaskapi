@@ -15,6 +15,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 @app.route('/upload', methods=['POST'])
 def getBookDetails():
+    print("im here")
     author_name=''
     book_name=''
     publisher=''
@@ -57,7 +58,7 @@ def getBookDetails():
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0',debug=True, port=80)
 
 
 
