@@ -9,10 +9,11 @@ try:
 
     # Perform operations here...
     # Creating a cursor object
+    # Creating a cursor object
     cursor = conn.cursor()
 
     # Executing the query to fetch all tables
-    cursor.execute("SHOW TABLES")
+    cursor.execute("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'")
 
     # Fetching all tables from the cursor
     tables = cursor.fetchall()
