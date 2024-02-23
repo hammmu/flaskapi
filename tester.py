@@ -8,7 +8,22 @@ try:
     print("Connected to MySQL database successfully")
 
     # Perform operations here...
+    # Creating a cursor object
+    cursor = conn.cursor()
 
+    # Executing the query to fetch all tables
+    cursor.execute("SHOW TABLES")
+
+    # Fetching all tables from the cursor
+    tables = cursor.fetchall()
+
+    # Displaying the tables
+    print("Tables in the database:")
+    for table in tables:
+        print(table[0])
+
+    # Closing the cursor and connection
+    cursor.close()
     # Closing the connection
     conn.close()
     print("Connection closed")
