@@ -21,7 +21,7 @@ try:
     # Displaying the tables
     print("Tables in the database:")
     for table in tables:
-        print(table[0])
+        print(table)
 
     # Closing the cursor and connection
     cursor.close()
